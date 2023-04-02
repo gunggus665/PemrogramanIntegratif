@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package crud;
+
+service UserService {
+  rpc CreateUser(User) returns (User) {}
+  rpc ReadUser(UserId) returns (User) {}
+  rpc UpdateUser(User) returns (User) {}
+  rpc DeleteUser(UserId) returns (User) {}
+
+}
+
+message User {
+  int64 id = 1;
+  string name = 2;
+  string email = 3;
+}
+
+message UserId {
+  int64 id = 1;
+}
+
+message ListUsersRequest {
+  int32 page = 1;
+  int32 perPage = 2;
+}
+
+message ListUsersResponse {
+  repeated User users = 1;
+  int32 total = 2;
+}
